@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { CursoEntity } from "./curso.model";
 
 @Entity('participantes', { schema: 'curso' })
@@ -54,4 +54,11 @@ telefono:number;
     comment:'curso al que pertenese'
 })
 curso:CursoEntity;
+
+@ManyToOne(
+  ()=> CursoEntity,
+  curso => curso.participantes)
+  cursos:CursoEntity
 }
+
+
