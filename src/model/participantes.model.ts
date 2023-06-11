@@ -56,9 +56,17 @@ telefono:number;
 curso:CursoEntity;
 
 @ManyToOne(
+
+  () => CursoEntity,
+  curso => curso.participantes
+)
+cursos: CursoEntity;
+}
+
   ()=> CursoEntity,
   curso => curso.participantes)
   cursos:CursoEntity
 }
+
 
 

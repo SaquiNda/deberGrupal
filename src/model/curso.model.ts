@@ -1,3 +1,4 @@
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity,  OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { ParticipantesEntity } from "./participantes.model";
 
@@ -38,9 +39,17 @@ export class CursoEntity {
   numeroParticipantes:number;
 
   @OneToMany(
+
+    () =>ParticipantesEntity,
+    participante =>participante.curso)
+  participantes: ParticipantesEntity[];
+}
+
+
     ()=> ParticipantesEntity,
     participante => participante.curso)
     participantes:ParticipantesEntity[]
 }
+
 
 
