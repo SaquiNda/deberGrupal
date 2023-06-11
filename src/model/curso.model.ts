@@ -46,10 +46,4 @@ export class CursoEntity {
 }
 
 
-    ()=> ParticipantesEntity,
-    participante => participante.curso)
-    participantes:ParticipantesEntity[]
-}
-
-
 
