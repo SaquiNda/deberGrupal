@@ -63,10 +63,7 @@ curso:CursoEntity;
 cursos: CursoEntity;
 }
 
-  ()=> CursoEntity,
-  curso => curso.participantes)
-  cursos:CursoEntity
-}
+
 
 
 

@@ -1,5 +1,4 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { Column, CreateDateColumn, DeleteDateColumn, Entity,  OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { ParticipantesEntity } from "./participantes.model";
 
 @Entity('curso', { schema: 'curso' })
@@ -25,31 +24,26 @@ export class CursoEntity {
     nullable: true,
   })
   deleteAt: Date;
-  @Column('varchar',{
-    name:'paralelo',
-    nullable:false,
-    comment:'nombre del paralelo'
+  @Column('varchar', {
+    name: 'paralelo',
+    nullable: false,
+    comment: 'nombre del paralelo'
   })
-  paralelo:string;
-  @Column('numeric',{
-    name:'numeroParticipantes',
-    nullable:false,
-    comment:'numero de participantes'
+  paralelo: string;
+  @Column('numeric', {
+    name: 'numeroParticipantes',
+    nullable: false,
+    comment: 'numero de participantes'
   })
-  numeroParticipantes:number;
+  numeroParticipantes: number;
 
   @OneToMany(
 
-    () =>ParticipantesEntity,
-    participante =>participante.curso)
+    () => ParticipantesEntity,
+    participante => participante.curso)
   participantes: ParticipantesEntity[];
 }
 
-
-    ()=> ParticipantesEntity,
-    participante => participante.curso)
-    participantes:ParticipantesEntity[]
-}
 
 
 
