@@ -2,6 +2,7 @@ import { Inject, Injectable, NotFoundException } from "@nestjs/common";
 import { ParticipantesEntity } from "../model/participantes.model";
 import { Repository } from "typeorm";
 import { CreateParticipanteDto } from "../participantes/dto/create-participante.dto";
+//Se me daño al momento de agregar en los enum un getRepository
 import { ServiceResponseHttpModel } from "../shared/models/service-responce-http.model";
 import { ReadParticipanteDto } from "../dtos";
 import { RepositoryEnum } from "../shared/enums/repository.enum";

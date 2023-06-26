@@ -6,13 +6,13 @@ import {DataSource} from "typeorm"
 export const cursoProviders = [
     {
         provide:RepositoryEnum.PRODUCT_REPOSITORY,
-        useFactory: (DataSource: DataSourceEnum) =>
+        useFactory: (dataSource: DataSourceEnum) =>
         DataSourceEnum.getRepository(ParticipantesEntity),
         inject: [DataSourceEnum, PG_DATA_SOURCE],
     },
     {
         provide: RepositoryEnum.CATEGORY_REPOSITORY,
-        useFactory: (DataSource: DataSourceEnum) =>
+        useFactory: (dataSource: DataSourceEnum) =>
         DataSourceEnum.getRepository(CursoEntity),
         inject: [DataSourceEnum, PG_DATA_SOURCE],
     }
