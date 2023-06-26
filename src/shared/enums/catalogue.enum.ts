@@ -1,6 +1,6 @@
 export enum CatalogueTypeEnum {
     CATALOGUE = 'CATALOGUE',
-        PRODUCT = 'PRODUCT'
+        PARTICIPANTE = 'PARTICIPANTE'
   }
   
   export enum CatalogueStateEnum {

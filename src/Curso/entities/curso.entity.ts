@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { ParticipantesEntity } from "./participantes.model";
+import { ParticipantesEntity } from "./participantes.entity";
 
 @Entity('curso', { schema: 'curso' })
 export class CursoEntity {

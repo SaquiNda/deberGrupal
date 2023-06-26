@@ -1,17 +1,17 @@
 import { Inject, Injectable, NotFoundException } from "@nestjs/common";
-import { ParticipantesEntity } from "../model/participantes.model";
+import { ParticipantesEntity } from "../entities/participantes.entity";
 import { Repository } from "typeorm";
 import { CreateParticipanteDto } from "../participantes/dto/create-participante.dto";
 //Se me daño al momento de agregar en los enum un getRepository
-import { ServiceResponseHttpModel } from "../shared/models/service-responce-http.model";
+import { ServiceResponseHttpModel } from "../../shared/models/service-responce-http.model";
 import { ReadParticipanteDto } from "../dtos";
-import { RepositoryEnum } from "../shared/enums/repository.enum";
+import { RepositoryEnum } from "../../shared/enums/repository.enum";
 import { plainToInstance } from 'class-transformer';
 import { UpdateParticipanteDto } from "../participantes/dto/update-participante.dto";
 
 @Injectable()
 export class ParicipanteService {
-    constructor(@Inject(RepositoryEnum.PRODUCT_REPOSITORY)
+    constructor(@Inject(RepositoryEnum.PARTICIPANTE_REPOSITORY)
     private repository: Repository<ParticipantesEntity>) {
     }
 
@@ -33,7 +33,7 @@ export class ParicipanteService {
     //         return this.paginationAndFilter(params);
     //     }
     // }
-    async update(id: string, payload: UpdateParticipanteDto){
+    async update(id: string, payload: UpdateParticipanteDto):Promise<ServiceResponseHttpModel>{
         const participante = await this.repository.findOneBy({ id });
         if(participante){
             throw new NotFoundException('Participante Not Found');
@@ -41,19 +41,15 @@ export class ParicipanteService {
         this.repository.merge(participante, payload);
         return this.repository.save(participante);
     }
-    async remove(id: string){
+    async remove(id: string):Promise<ServiceResponseHttpModel>{
         const participante = await this.repository.findOneBy({ id});
         if(participante){
             throw new NotFoundException('Participante Not Found');
         }
         return await this.repository.softRemove(participante);
     }
-    async removeAll(payload: ParticipantesEntity){
-        const participante = await this.repository.findOneBy({ id });
-        if(participante){
-            throw new NotFoundException('Participante Not Found');
-        }
-        this.repository.merge(participante, payload);
-        return this.repository.save(participante);
-    }
+    async removeAll(payload: ParticipantesEntity[]):Promise<ServiceResponseHttpModel> {
+        const productDeleted = this.repository.softRemove(payload);
+        return {data:productDeleted};
+      }
 }
